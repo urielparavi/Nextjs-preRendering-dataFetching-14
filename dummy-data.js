@@ -43,37 +43,6 @@ export function getAllEvents() {
   return DUMMY_EVENTS;
 }
 
-// 📌 Returns events that match a specific year and month
-// The dateFilter parameter should be an object: { year: number, month: number }
-// Note: JavaScript months are 0-based, so we subtract 1 from the given month
-export function getFilteredEvents(dateFilter) {
-  const { year, month } = dateFilter;
-
-  let filteredEvents = DUMMY_EVENTS.filter((event) => {
-    const eventDate = new Date(event.date);
-    return (
-      // Compare the event's year and month:
-      // - getFullYear() returns the full year (e.g., 2022)
-      // - getMonth() returns a zero-based month (0 = January, 11 = December),
-      //   so we subtract 1 from the input month to match the Date object's format
-      eventDate.getFullYear() === year && eventDate.getMonth() === month - 1
-    );
-  });
-
-  return filteredEvents;
-  // getFilteredEvents({ year: 2022, month: 4 });
-
-  // Result:
-  // [
-  //   {
-  //     id: 'e3',
-  //     title: 'Networking for extroverts',
-  //     date: '2022-04-10',
-  //     ...
-  //   }
-  // ]
-}
-
 // 📌 Returns a single event that matches the given ID
 // If no match is found, returns undefined
 export function getEventById(id) {
